@@ -42,14 +42,15 @@ These are the steps required to install and run the Discount Access Manager 🤑
   docker compose up
 ```
 
-3. Use the following commands to set and run your project: *(use any code editor terminal like VS Code or CLI in the current directory)*
+3. For making changes, fork `https://github.com/piyushk2001/Discount_Access_PolicyOPAL.git` and pass it to `OPAL_POLICY_REPO_URL` in the opal-server environment inside `docker-compose.yml`.
+
+4. Webhook
+
+5. Use the following commands to set and run your project: *(use any code editor terminal like VS Code or CLI in the current directory)*
 ```bash
   npm i express axios ejs
   npm i -g nodemon
   nodemon index.js
 ```
-
 > [!NOTE]
 > `nodemon index.js` will start the server at `http://localhost:3000` and reflect any code changes dynamically.
-> Provided `data.json` and `rbac.rego` are only for viewing.
-> For making changes, fork `https://github.com/piyushk2001/Discount_Access_PolicyOPAL.git` and pass it in opal-server environment inside `docker-compose.yml` as `OPAL_POLICY_REPO_URL`
