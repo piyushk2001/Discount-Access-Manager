@@ -13,8 +13,6 @@
 **This web application uses OPAL's policy authentication and authorization feature to let users access discounts based on their membership and purchase history.
 It uses git webhook to deliver the payload to the OPAL server, which changes the website's discounted items dynamically.**
 
-<br>
-
 ## Features
 - Classification and authentication using user's data.
 - User's membership and purchase history authorizes him/her to specific discounts.
@@ -22,13 +20,19 @@ It uses git webhook to deliver the payload to the OPAL server, which changes the
   - Users without membership will get discounts based on their purchase history.
 - Uses git webhook to track committed changes in the policy repo.
 
+<br>
+
 # Policy Management Flow
 <img src="preview/policy.png" alt="Policy Management Flow" border="10" />
+
+<br>
 
 # Synchronization Workflow
 <img src="preview/synchronization.png" alt="Synchronization Workflow" border="10" />
 
-##  :outbox_tray: Installation Guide
+<br>
+
+# :outbox_tray: Installation Guide
 These are the steps required to install and run the Discount Access Manager 🤑 project:
 
 1. Clone the repository and change the current directory to the cloned repository:
@@ -46,7 +50,9 @@ These are the steps required to install and run the Discount Access Manager 🤑
 
 4. Head over to the running opal-server container in Docker Hub and generate webhook secret key using its **Exec CL:** `opal-server generate-secret` and pass it to `OPAL_POLICY_REPO_WEBHOOK_SECRET` in the opal-server environment inside `docker-compose.yml`.
 
-5. Use the following commands to set and run your project: *(use any code editor terminal like VS Code or CLI in the current directory)*
+5. 
+
+6. Use the following commands to set and run your project: *(use any code editor terminal like VS Code or CLI in the current directory)*
 ```bash
   npm i express axios ejs
   npm i -g nodemon
