@@ -54,9 +54,14 @@ These are the steps required to install and run the Discount Access Manager 🤑
 
 <img src="preview/opalcontainer.png" alt="Opal Container" width="45%" border="10" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="preview/secretkey.png" alt="Webhook Key" width="45%" border="10" />
 
-5. 
+5. Sign up and visit Ngrok for your auth token and run following command CMD (admin-mode):
+```cmd
+  choco install ngrok
+  ngrok config add-authtoken YOUR_AUTH_TOKEN
+  ngrok http http://localhost:7002
+```
 
-6. Use the following commands to set and run your project: *(use any code editor terminal like VS Code or CLI in the current directory)*
+7. Use the following commands to set and run your project: *(use any code editor terminal like VS Code or CLI in the current directory)*
 ```bash
   npm i express axios ejs
   npm i -g nodemon
@@ -64,3 +69,7 @@ These are the steps required to install and run the Discount Access Manager 🤑
 ```
 > [!NOTE]
 > `nodemon index.js` will start the server at `http://localhost:3000` and reflect any code changes dynamically.
+
+<p align="center">
+   Thank you for visiting and if you liked it... <br> ...give this repo a <a href="https://github.com/piyushk2001/Discount-Access-Manager/stargazers">⭐</a>
+</p>
