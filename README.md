@@ -21,3 +21,6 @@ It uses git webhook to deliver the payload to the OPAL server, which changes the
   - Membership holders will get a full discount on all the items on the website.
   - Users without membership will get discounts based on their purchase history.
 - Uses git webhook to track committed changes in the policy repo.
+
+# Policy Management Flow
+<img src="preview/policy.png" alt="Policy Management Flow" border="10" />
