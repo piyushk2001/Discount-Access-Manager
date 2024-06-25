@@ -15,7 +15,7 @@ services:
       # number of uvicorn workers to run inside the opal-server container
       - UVICORN_NUM_WORKERS=4
       # public git repo hosting our policy
-      - OPAL_POLICY_REPO_URL=https://github.com/piyushk2001/Premium_Access_PolicyOPAL.git
+      - OPAL_POLICY_REPO_URL=https://github.com/piyushk2001/Discount_Access_PolicyOPAL.git
       # using git webhook instead of polling interval to check for changes only when the repo has new commits.
       # - OPAL_POLICY_REPO_POLLING_INTERVAL=30
       - OPAL_POLICY_REPO_WEBHOOK_SECRET=iTX1Bfau7c717Hy7pjrUunP62-h0UB47tVzJNdoc5Oc
