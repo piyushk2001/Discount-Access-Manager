@@ -1,8 +1,7 @@
 <h1 align="center">Discount Access Manager 🤑</h1>
 <h3 align="center">Manage discounts based on the user's membership and purchase history.</h3>
 
-<a href="https://www.youtube.com/watch?v=7uHPNM5C3V8" target="_blank">
-<kbd><img src="preview/thumbnail.png" alt="Discount Access Manager Permit Quest"/></kbd></kbd></a>
+<a href="https://www.youtube.com/watch?v=7uHPNM5C3V8"><kbd><img src="preview/thumbnail.png" alt="Discount Access Manager Permit Quest"/></kbd></kbd></a>
 
 > [!IMPORTANT]
 > Alternatively you can refer to this link: https://youtu.be/7uHPNM5C3V8?si=8xy3Kb4zewR5Iyk6
@@ -23,12 +22,12 @@ It uses git webhook to deliver the payload to the OPAL server, which changes the
 <br>
 
 # Policy Management Flow
-<img src="preview/policy.png" alt="Policy Management Flow" border="10" />
+<img src="preview/policy.png" alt="Policy Management Flow"/>
 
 <br>
 
 # Synchronization Workflow
-<img src="preview/synchronization.png" alt="Synchronization Workflow" border="10" />
+<img src="preview/synchronization.png" alt="Synchronization Workflow"/>
 
 <br>
 
@@ -52,7 +51,7 @@ These are the steps required to install and run the Discount Access Manager 🤑
 
 <br>
 
-<img src="preview/opalcontainer.png" alt="Opal Container" width="45%" border="10" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="preview/secretkey.png" alt="Webhook Key" width="45%" border="10" />
+<img src="preview/opalcontainer.png" alt="Opal Container" width="45%"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="preview/secretkey.png" alt="Webhook Key" width="45%"/>
 
 5. Visit Ngrok for your auth token and run the following command CMD (admin-mode):
 ```cmd
@@ -65,7 +64,7 @@ These are the steps required to install and run the Discount Access Manager 🤑
 
 <br>
 
-<img src="preview/webhooks1.png" alt="GitHub Webhook" width="45%" border="10" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="preview/webhooks2.png" alt="GitHub Webhook" width="45%" border="10" />
+<img src="preview/webhooks1.png" alt="GitHub Webhook" width="45%"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="preview/webhooks2.png" alt="GitHub Webhook" width="45%"/>
 
 7. Setup and run your project: *(use any code editor terminal like VS Code or CLI in the current directory)*
 ```bash
