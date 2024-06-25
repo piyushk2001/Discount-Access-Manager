@@ -50,6 +50,10 @@ These are the steps required to install and run the Discount Access Manager 🤑
 
 4. Head over to the running opal-server container in Docker Hub and generate webhook secret key using its **Exec CL:** `opal-server generate-secret` and pass it to `OPAL_POLICY_REPO_WEBHOOK_SECRET` in the opal-server environment inside `docker-compose.yml`.
 
+<br>
+
+<img src="preview/opalcontainer.png" alt="Opal Container" width="45%" border="10" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="preview/secretkey.png" alt="Webhook Key" width="45%" border="10" />
+
 5. 
 
 6. Use the following commands to set and run your project: *(use any code editor terminal like VS Code or CLI in the current directory)*
