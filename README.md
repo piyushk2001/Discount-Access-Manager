@@ -1,6 +1,7 @@
 <h1 align="center">Discount Access Manager 🤑</h1>
-<img align="center" src="preview/title.png">
 <h3 align="center">Manage discounts based on the user's membership and purchase history.</h3>
+<a href="https://www.youtube.com/watch?v=7uHPNM5C3V8" target="_blank">
+<img src="preview/title.png" alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 <br>
 
