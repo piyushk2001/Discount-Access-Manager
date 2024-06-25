@@ -70,6 +70,8 @@ These are the steps required to install and run the Discount Access Manager 🤑
 > [!NOTE]
 > `nodemon index.js` will start the server at `http://localhost:3000` and reflect any code changes dynamically.
 
+<br>
+
 <p align="center">
-   Thank you for visiting and if you liked it... <br> ...give this repo a <a href="https://github.com/piyushk2001/Discount-Access-Manager/stargazers">⭐</a>
+   Thank you for visiting and if you liked it... <br> <a href="https://github.com/piyushk2001/Discount-Access-Manager/stargazers">...give this repo a ⭐</a>
 </p>
