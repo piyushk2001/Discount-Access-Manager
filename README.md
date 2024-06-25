@@ -2,7 +2,7 @@
 <h3 align="center">Manage discounts based on the user's membership and purchase history.</h3>
 
 <a href="https://www.youtube.com/watch?v=7uHPNM5C3V8" target="_blank">
-<kbd><img src="preview/title.png" alt="Discount Access Manager Permit Quest"/></kbd></kbd></a>
+<kbd><img src="preview/thumbnail.png" alt="Discount Access Manager Permit Quest"/></kbd></kbd></a>
 
 > [!IMPORTANT]
 > Alternatively you can refer to this link: https://youtu.be/7uHPNM5C3V8?si=8xy3Kb4zewR5Iyk6
