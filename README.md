@@ -5,7 +5,7 @@
 <img src="preview/title.png" alt="Discount Access Manager Permit Quest" border="10" /></a>
 
 > [!IMPORTANT]
-> 👆 Click this thumbnail to watch the video or refer to this link: https://youtu.be/7uHPNM5C3V8?si=8xy3Kb4zewR5Iyk6
+> Alternatively you can refer to this link: https://youtu.be/7uHPNM5C3V8?si=8xy3Kb4zewR5Iyk6
 
 <br>
 
