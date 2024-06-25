@@ -11,3 +11,7 @@ It uses git webhook to deliver the payload to the OPAL server, which changes the
 <br>
 
 ## Features
+- Classification and authentication using user's data.
+- User's membership and purchase history authorizes him/her to specific discounts.
+  - Membership holders will get a full discount on all the items on the website.
+  - Users without membership will get discounts based on their purchase history.
