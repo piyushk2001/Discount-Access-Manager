@@ -46,27 +46,34 @@ These are the steps required to install and run the Discount Access Manager 🤑
   docker compose up
 ```
 
-3. For policy making changes, fork `https://github.com/piyushk2001/Discount_Access_PolicyOPAL.git` and pass it to `OPAL_POLICY_REPO_URL` in the opal-server environment inside `docker-compose.yml`.
+3. For policy-making changes, fork `https://github.com/piyushk2001/Discount_Access_PolicyOPAL.git` and pass it to `OPAL_POLICY_REPO_URL` in the opal-server environment inside `docker-compose.yml`.
 
-4. Head over to the running opal-server container in Docker Hub and generate webhook secret key using its **Exec CL:** `opal-server generate-secret` and pass it to `OPAL_POLICY_REPO_WEBHOOK_SECRET` in the opal-server environment inside `docker-compose.yml`.
+4. Head over to the running opal-server container in Docker Hub and generate a webhook secret key using its **Exec CL:** `opal-server generate-secret` and pass it to `OPAL_POLICY_REPO_WEBHOOK_SECRET` in the opal-server environment inside `docker-compose.yml`.
 
 <br>
 
 <img src="preview/opalcontainer.png" alt="Opal Container" width="45%" border="10" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="preview/secretkey.png" alt="Webhook Key" width="45%" border="10" />
 
-5. Sign up and visit Ngrok for your auth token and run following command CMD (admin-mode):
+5. Visit Ngrok for your auth token and run the following command CMD (admin-mode):
 ```cmd
   choco install ngrok
   ngrok config add-authtoken YOUR_AUTH_TOKEN
   ngrok http http://localhost:7002
 ```
 
-7. Use the following commands to set and run your project: *(use any code editor terminal like VS Code or CLI in the current directory)*
+6. Add Ngrok's mapped public URL and secret key to your GitHub's policy repo webhook.
+
+<br>
+
+<img src="preview/webhooks1.png" alt="GitHub Webhook" width="45%" border="10" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="preview/webhooks2.png" alt="GitHub Webhook" width="45%" border="10" />
+
+7. Setup and run your project: *(use any code editor terminal like VS Code or CLI in the current directory)*
 ```bash
   npm i express axios ejs
   npm i -g nodemon
   nodemon index.js
 ```
+
 > [!NOTE]
 > `nodemon index.js` will start the server at `http://localhost:3000` and reflect any code changes dynamically.
 
