@@ -1,0 +1,53 @@
+version: "3.8"
+services:
+  broadcast_channel:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  opal_server:
+    # by default we run opal-server from latest official image
+    image: permitio/opal-server:latest
+    environment:
+      # the broadcast backbone uri used by opal server workers (see comments above for: broadcast_channel)
+      - OPAL_BROADCAST_URI=postgres://postgres:postgres@broadcast_channel:5432/postgres
+      # number of uvicorn workers to run inside the opal-server container
+      - UVICORN_NUM_WORKERS=4
+      # public git repo hosting our policy
+      - OPAL_POLICY_REPO_URL=https://github.com/piyushk2001/Premium_Access_PolicyOPAL.git
+      # using git webhook instead of polling interval to check for changes only when the repo has new commits.
+      # - OPAL_POLICY_REPO_POLLING_INTERVAL=30
+      - OPAL_POLICY_REPO_WEBHOOK_SECRET=iTX1Bfau7c717Hy7pjrUunP62-h0UB47tVzJNdoc5Oc
+      # configures from where the opal client should initially fetch data (when it first goes up, after disconnection, etc).
+      - OPAL_DATA_CONFIG_SOURCES={"config":{"entries":[{"url":"http://opal_server:7002/policy-data","topics":["policy_data"],"dst_path":"/static"}]}}
+      - OPAL_LOG_FORMAT_INCLUDE_PID=true
+      # private key (not required during testing)
+      - OPAL_AUTH_PRIVATE_KEY=-----BEGIN RSA PRIVATE KEY-----_MIIJJwIBAAKCAgEAvJd1BD0RC92u0GaACFQ/7G8+cP1RHVYiyJtt81BD2QeuJSfz_BP2iH6mAahb6hUmt22Yr8aSwlcJyv2qIinfnpx94fwDTZLdQ1hfHq3FElY7MWlN3_1mNzZyXA+senj6TpttI9IH6tsqZB8ccBfLcGKIudqToTXhFeeIm9y3/jmVlVYnCc_8G400iSExS4hkeov1lmK/EnJ/pyfGR3761IGoCmwwH6lj3kmb53BfOe9Iu60q/h+_JQNQ04dmaQbv3hKYn1n71HpNbPhyzQL8GCRBhXgIA0nWraBYPU2NXXFDZ3r6ZQFQ_SEuFe4MnB62KDNvzcTnU2ErLyljWrMj+nC+Tp4dL0NJfSLqwsp7eqlmGABIVudww_fLpuT4Pq1D4xG4KbxSm+FhWEE/Nkq32ogVxTQIiNS/3I7DY1hM8nCrT+IyhK6jhA_ursFLNrHMOBkqmFaBZbfUfbarj+8jBJ1ySNRjaMwRtSdz4nZ6I/rBnzQu6yeQ0z0_YHNlT71KFuYVqhNNzQwSWdgv7anPc3i5yLBcp3KSJHVZFfaOblUyxzvVozTI8XCh_aTRzzsCh+PhSDMEODr5f95/8/JViA5dKWy7Yrxmm04Qtv/J8PCalXAeb0VQZ6HOQ_qH2xjfTCI/g7a/9rGiFFPsMsvyPI93bk454nqgLOlNi45ivu4/ieuzHfm5UCAwEA_AQKCAgAHg3U7BP/P3DYhwWOqcUjWr5vqPn1j0NGz8lVQE0uQsviiLFRHR5+U6Vjf_YSj79HKDwi9QAkKyxLtzmtfzxFErXFqdnLfPVGpZDTt8PhgAaV8E3jxxAydO3bcx_hpDLbUOOcBPVXpam/m60JjyN7nDFXsKaQmERJ1n/LWWtXNwBeQio0lm+TnW2RZQw_kuTtfkoHnSunX303sp+4DXTC7FKtQNv031bTP31jhwJ1anojkSULkOvdp6MpukQ/_PPKDg3QnLRuWXIUHKWLRfiPzBkbB/YU8NE3kPvYlAxj1txR7Y+/j5EiBiNi5kgEV_Ejnkx0KMqUQsldZGqoFrAtr59/9G5MBqAdcoFL/nBlmQ/mAdtq4YOzq5SyFLbuKx_+MSqBIxcWKMNtMmSfZSescDUARdiHeSGqcvAUa07jUfvj0Ng9xBZlNc4Zi3bIq9k_JWXcCjwNec7QDZ33L+YgIFDa8QtaqI32kj3l6dceoAkCNnxUdec27HINj74oQHR5_CStyXI8c3wEhLw02sWfa6+luFrUjpOsx0wJHXQ/qQw0CPSFOFmqa3VPLFSCW5w8y_H7k/sgNNMdHrbbk5jWOxUSihdHxWzjups+i8RedEhoMQEVBdh6IZ0P7oy+gVf8rO_8D0q85SMXhNOinQnFyj16PW53oQWJvwJV7wn0drqlj4qn7ZQpQKCAQEA92LYOSL7_alU7s83evKgLV4NvssuNl3ND0JZX9PAVgMQ+mWY825MlWuzms3rju3/tNdCiHm3w_JSzez4CeCwnlcNqjlyzaDWvpkTAVtEQaoOwxX4ezAoaYDSzPVzUs8B3+Jm8bkf3S_wv11VgOgivFzEw4Dwg1hlAmF2plQefVrcAnr1LwukSCNkItERAKfEG67NR5EVdj3_QbEtQEiJdDHi78Po0yfkQQFdGD5qFVuG0GCUnWlcANC3QOZl08WD38ZhjuZYZJon_9+dt+4TelaNbBZnmmsYOnzR5f/BWVOvdC+8mIlhON6/BtA96MIihRjKfuUVeEQEW_4yx4HvhkdvH0EwKCAQEAwyiHbX2b28gGPOBstZBkbIuIfNYgd+3zROq1An/9jene_53euGfNbHkpxtSUcBLJ1nMwZtlTL4jYepM+epfCwY0iaDFw2bgoVclN4b3wYIB0R_Het9LyeXuwMJp6UVMxMJwrLwm7QSX2spFnJndxCCIWPZm3l6CglU9Ct7QW2mRce1_3jZJEOY4hm/Iec3Ps89+bApnA/Bx6iyj6ohDpicDp69QMiWmMlPAnqwxW584dSOa_X8zQzE7zyv9SYWEXhKAMxmqZKugwrEl2omRhK7oFjZSNjdADlN4CIjvqjpzM8Pvo_wd/WyDWPAVGmqIp0t0NQYjmqf2ihsQJN7ipruV2WtwKCAQAyyhFYUa1KXGtgc+DJ_3LpPYkW5cH8GW/zNQ0CVogDYKfIsLkhKUEB4FXEb4hwFL7N0u/u8wZdvGnI4KdDI_tWRssgaqD+RIoyIV08hw9RZ+eV99nG+NEjL/aXa8EcfDGHVIUMFZTMJLlBvV5/K6_8+1LOTJeUb751KathZJ3J4LCQtcvGt94njVSOrVuPReJGSLIOgmPknbY/tYqf3nw_6BkOXqtbRrJfAjeptY60CdF40ItScgIYjMFCysqXGtMDS0hWPUZiiR+xjssOu22z_TRFv6fPlTMpNt0lGkgI3dyEvxQ6QOI7+cdAT9qWAd1yc++G8+NfiJ9YaF9Qlj5uY_q/4PAoIBAEabgDv16RDgUplt3Qbnod2/sfbwhbi+R3iUrj6kTfktNy9plnzfFgVk_i7UtIvD0HCdJlLfqAAXs7LNWRqDk7vxMxSdZqXuwfEfruTQkopnjylCX5afM3FGV_7MVRrdTXu31Mvk6nHMqW+7uaUqK6P0qTVKSyk5vT+n+Ix8RJRpISilNGMrNBiAvj_n5WqB86XcLboIJNFSAGgewGcoVUY4nKltA8gnfuxX4xI4mayuXtwESc99AEnQ38b_VxPSS+749QZIhPgIH6wFvD1OsfVfDSlHKNu4+cK/e+gk410Lj/5UNccHFC9FaWLh_xrlNtqKjYQ7YrD4CfhWLruRPRsA/AwsCggEAX0hNhbXK/iWykzaLN176Pc/pMyWE_XrCl+oskhUcdJVbxHMyk/ifWjgteU5Hr23K/s8Ltqlh4pwlwcfVlPNUb5ISx67a/_dsvnRuNFKzBbGj5qwoIkr1BFfP16SX1Sa7d1VBkFx/aQytsUJd/p+XHjUeUe17El_wpsqCedmyNUMLAjGTMlf+o2UaDHe5ECx9MynyZXL2b+SSQW72DLCSeuOuVk0vC9+_1LOdsRLwL7LzOGmt344AUWLFbc0VkrEH/TSkWzduJ+/hHBbN+dnu8Ayz5oR0Gv19_aZDKFphbB/pHwFyNaiAQILfUz74b1lVBMooVCFDhFsxPJjvP6S8WGWLuOw==_-----END RSA PRIVATE KEY-----
+      # public key (not required during testing)
+      - OPAL_AUTH_PUBLIC_KEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8l3UEPREL3a7QZoAIVD/sbz5w/VEdViLIm23zUEPZB64lJ/ME/aIfqYBqFvqFSa3bZivxpLCVwnK/aoiKd+enH3h/ANNkt1DWF8ercUSVjsxaU3fWY3NnJcD6x6ePpOm20j0gfq2ypkHxxwF8twYoi52pOhNeEV54ib3Lf+OZWVVicJzwbjTSJITFLiGR6i/WWYr8Scn+nJ8ZHfvrUgagKbDAfqWPeSZvncF8570i7rSr+H4lA1DTh2ZpBu/eEpifWfvUek1s+HLNAvwYJEGFeAgDSdatoFg9TY1dcUNnevplAVBIS4V7gycHrYoM2/NxOdTYSsvKWNasyP6cL5Onh0vQ0l9IurCynt6qWYYAEhW53DB8um5Pg+rUPjEbgpvFKb4WFYQT82SrfaiBXFNAiI1L/cjsNjWEzycKtP4jKErqOEC6uwUs2scw4GSqYVoFlt9R9tquP7yMEnXJI1GNozBG1J3Pidnoj+sGfNC7rJ5DTPRgc2VPvUoW5hWqE03NDBJZ2C/tqc9zeLnIsFyncpIkdVkV9o5uVTLHO9WjNMjxcKFpNHPOwKH4+FIMwQ4Ovl/3n/z8lWIDl0pbLtivGabThC2/8nw8JqVcB5vRVBnoc5CofbGN9MIj+Dtr/2saIUU+wyy/I8j3duTjnieqAs6U2LjmK+7j+J67Md+blQ== pkaty@Piyush
+      # master token (to help in generating client JWT token)
+      - OPAL_AUTH_MASTER_TOKEN=K1s5-ilK4Rr5X5Dm8Nv6nuKlj6VPRjvxkR9PP9SPrNQ
+    ports:
+      # opal server at: http://localhost:7002
+      - "7002:7002"
+    depends_on:
+      - broadcast_channel
+  opal_client:
+    # by default we run opal-client from latest official image
+    image: permitio/opal-client:latest
+    environment:
+      - OPAL_SERVER_URL=http://opal_server:7002
+      - OPAL_LOG_FORMAT_INCLUDE_PID=true
+      - OPAL_INLINE_OPA_LOG_FORMAT=http
+      #client JWT token
+      - OPAL_CLIENT_TOKEN=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTkzMDE0NDQsImV4cCI6MTc1MDgzNzQ0NCwiYXVkIjoiaHR0cHM6Ly9hcGkub3BhbC5hYy92MS8iLCJpc3MiOiJodHRwczovL29wYWwuYWMvIiwic3ViIjoiNjEyZTQwNGU4MzcwNGJiMzhkMzBkNDg5ZmM5ZjNhMmMiLCJwZWVyX3R5cGUiOiJjbGllbnQifQ.GcJhaLnsJbW3lLC3gaylcx8zDa6awJ-sfMXLw-jl-oR4vWDiciFNj4mRhTh4-_xVEGBJbqtg5-01G8JJ76rlvVsjrHiF-PBM3I4pbHN47mVqYCrF9RGRiqCfJEztDKY3ugM7c50lgg7-JxPIDvKRzFFa-LueIbxUqakYtWpvfcmJaRPCvW6qu1RitT55BHZN0nRV-JSRYT-KIAV4eGyQcddHsXdyofRhuRFZ3tg0iKANXGOPKQWeJUn2KyaenyECvNeCL5KbTsnIxyJkV2x26GZUKmOxqfBaG4AH2obZsW0UxnS35lD595QXkK4CidGXk236P-pRpsr1HrXXJd7CfgMMtO02_EINmbCFoRHuQdKsClukdFf3F0oORoLZno6aYQO2TvQtOo2XWk6rblpjN-0FUmUUgKgyxSK38hxaywrxBzejADVkwHRgb6xV4VTeiakr53hoPR_pHGeoZp1XhNqRlDPsvO2160__xTX0hV4v0Va_2I6r2kJpAzOD-Zrhlg1bV9qacTOMRP-HIt1of05MdC-tq9lFuXL5kZT_3hB8mXSVfGiQR-4DGWtjgSwR9bfWg8rCTtsdwNtP1HwMJEgJUl897s7B0ewalvmkHSDFZnmaBsSbssdWphAhckzhZ5G2GWYKQe1nzCemLA342q4UnOQnZ20RdJbXz0NAeFY
+    ports:
+      # opal client at: http://localhost:7766
+      - "7766:7000"
+      # OPA api at: http://localhost:8181
+      - "8181:8181"
+    depends_on:
+      - opal_server
+    # to make sure that opal-server is already up before starting the client (required during testing)
+    command: sh -c "exec ./wait-for.sh opal_server:7002 --timeout=20 -- ./start.sh"
