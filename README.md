@@ -24,3 +24,9 @@ It uses git webhook to deliver the payload to the OPAL server, which changes the
 
 # Policy Management Flow
 <img src="preview/policy.png" alt="Policy Management Flow" border="10" />
+
+# Synchronization Workflow
+<img src="preview/synchronization.png" alt="Synchronization Workflow" border="10" />
+
+##  :outbox_tray: Installation Guide
+These are the steps required to install and run the Discount Access Manager 🤑 project:
