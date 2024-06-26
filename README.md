@@ -53,7 +53,7 @@ These are the steps required to install and run the Discount Access Manager 🤑
 
 <img src="preview/opalcontainer.png" alt="Opal Container" width="45%"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="preview/secretkey.png" alt="Webhook Key" width="45%"/>
 
-5. Visit Ngrok for your auth token and run the following command CMD (admin-mode):
+5. Visit Ngrok for your auth token and run the following commands in CMD (admin-mode):
 ```cmd
   choco install ngrok
   ngrok config add-authtoken YOUR_AUTH_TOKEN
