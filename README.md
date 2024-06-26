@@ -10,7 +10,7 @@
 
 # Discount Corner
 **This web application uses OPAL's policy authentication and authorization feature to let users access discounts based on their membership and purchase history.
-It uses git webhook to deliver the payload to the OPAL server, which changes the website's discounted items dynamically.**
+It uses git webhook to deliver payloads to the OPAL server, which changes the website's discounted items dynamically.**
 
 ## Features
 - Classification and authentication using user's data.
