@@ -47,7 +47,7 @@ These are the steps required to install and run the Discount Access Manager 🤑
 
 3. For policy-making changes, fork `https://github.com/piyushk2001/Discount_Access_PolicyOPAL.git` and pass it to `OPAL_POLICY_REPO_URL` in the opal-server environment inside `docker-compose.yml`.
 
-4. Head over to the running opal-server container in Docker Hub and generate a webhook secret key using its **Exec CL:** `opal-server generate-secret` and pass it to `OPAL_POLICY_REPO_WEBHOOK_SECRET` in the opal-server environment inside `docker-compose.yml`.
+4. Head over to the running opal-server container in Docker Hub to generate a webhook secret key using its **Exec CL:** `opal-server generate-secret` and pass it to `OPAL_POLICY_REPO_WEBHOOK_SECRET` in the opal-server environment inside `docker-compose.yml`.
 
 <br>
 
